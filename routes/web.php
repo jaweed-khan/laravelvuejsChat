@@ -19,4 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/contacts', [App\Http\Controllers\ContactsController::class, 'get']); 
+Route::get('/conversation/{id}', [App\Http\Controllers\ContactsController::class, 'getMessagesFor']); 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
