@@ -23,7 +23,7 @@ class MessageFactory extends Factory
         return [
             'from' => $from,
             'to' => $to,
-            'text' => $this->faker->sentence,
+            'text' => $this->faker->sentence(),
             
         ];
     }
