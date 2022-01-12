@@ -24,7 +24,11 @@ import ContactsList from './ContactsList';
             };
         },
         mounted() {
-            Echo.private(`messages${this.user.id}`)
+            // Echo.private(`messages${this.user.id}`)
+            //     .listen('NewMessage', (e) => {
+            //         this.handleIncoming(e.message);
+            //     });
+               Echo.private(this.user.id)
                 .listen('NewMessage', (e) => {
                     this.handleIncoming(e.message);
                 });
@@ -46,15 +50,15 @@ import ContactsList from './ContactsList';
                     this.selectedContact = contact; 
                 })
             },
-            saveNewMessage(text){
-                this.messages.push(text);
+            saveNewMessage(message){
+                this.messages.push(message);
             },
             handleIncoming(message){
                 if(this.selectedContact && message.from == this.selectedContact.id){
                     this.saveNewMessage(message); 
                 } 
 
-                alert(message.text); 
+                //alert(message.text); 
             }
         },
         components: {
